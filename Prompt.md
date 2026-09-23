@@ -1,0 +1,1152 @@
+we have to make a frontend only website
+first make the base plain white
+
+Absolutely. We’ll start with a frontend-only base: plain white background, no styling beyond the essentials, and no backend functionality.
+
+Next, we can layer the layout/components on top of this foundation.
+
+make the based code
+
+Here’s a minimal frontend-only base with a plain white page:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: #ffffff;
+      color: #000000;
+      font-family: Arial, sans-serif;
+    }
+
+    #app {
+      width: 100%;
+      min-height: 100vh;
+      background: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Website content goes here -->
+  </div>
+
+  <script>
+    // Frontend JavaScript goes here
+  </script>
+</body>
+</html>
+
+This gives us a completely blank white 100vh canvas to build the website on.
+
+now add a very light skin body at the middle part of the page (20% from above 20% from below)
+
+Yes — keeping the existing navbar unchanged, the 60% skin body is now split 60% left / 40% right. The left side has the heading, two-line description, and the three requested buttons. The right side is reserved for the Ganpati illustration.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandup</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+      color: #222222;
+    }
+
+    #app {
+      width: 100%;
+      min-height: 100vh;
+      background: #ffffff;
+    }
+
+    /* =========================
+       TOP NAVIGATION
+       ========================= */
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 20vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 6%;
+      background: #ffffff;
+    }
+
+    /* Brand */
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+
+      text-decoration: none;
+      color: #222222;
+
+      line-height: 1.1;
+    }
+
+    .brand-main {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .brand-sub {
+      margin-top: 5px;
+
+      font-size: 13px;
+      font-weight: 400;
+
+      color: #c2c2c2;
+      letter-spacing: 0.4px;
+    }
+
+    /* Center Navigation */
+
+    .nav-links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: flex;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .nav-button {
+      position: relative;
+
+      border: none;
+      outline: none;
+      background: transparent;
+
+      padding: 10px 2px;
+
+      font-size: 15px;
+      font-weight: 400;
+
+      color: #333333;
+
+      cursor: pointer;
+    }
+
+    .nav-button::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 2px;
+
+      background: #fff4ed;
+
+      transform: scaleX(0);
+      transform-origin: center;
+
+      transition: transform 0.2s ease;
+    }
+
+    .nav-button:hover::after,
+    .nav-button.active::after {
+      transform: scaleX(1);
+    }
+
+    /* Right Navigation */
+
+    .nav-right {
+      margin-left: auto;
+
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .disbient {
+      font-size: 13px;
+      color: #b5b5b5;
+      letter-spacing: 0.3px;
+    }
+
+    .darshan-nav-button {
+      border: none;
+
+      background: #795548;
+      color: #ffffff;
+
+      padding: 10px 22px;
+
+      font-size: 14px;
+      font-weight: 400;
+
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .darshan-nav-button:hover {
+      background: #69483d;
+    }
+
+    /* =========================
+       SKIN BODY - 60% HEIGHT
+       ========================= */
+
+    .skin-body {
+      position: absolute;
+
+      top: 20vh;
+      bottom: 20vh;
+      left: 0;
+
+      width: 100%;
+
+      background: #fff4ed;
+
+      display: flex;
+    }
+
+    /* =========================
+       LEFT 60%
+       ========================= */
+
+    .hero-left {
+      width: 60%;
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding-left: 9%;
+      padding-right: 6%;
+    }
+
+    .hero-heading {
+      margin-bottom: 14px;
+
+      font-size: 42px;
+      font-weight: 500;
+
+      color: #29211e;
+      line-height: 1.15;
+    }
+
+    .hero-description {
+      display: block;
+
+      max-width: 500px;
+
+      font-size: 16px;
+      line-height: 1.7;
+
+      color: #9b9b9b;
+    }
+
+    /* Buttons */
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 28px;
+    }
+
+    .schedule-button {
+      border: none;
+
+      background: #795548;
+      color: #ffffff;
+
+      padding: 13px 22px;
+
+      font-size: 14px;
+
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .schedule-button:hover {
+      background: #69483d;
+    }
+
+    .outline-button {
+      border: 1px solid #222222;
+
+      background: transparent;
+      color: #222222;
+
+      padding: 12px 22px;
+
+      font-size: 14px;
+
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .outline-button:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    /* =========================
+       RIGHT 40%
+       ========================= */
+
+    .hero-right {
+      width: 40%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+    }
+
+    .ganpati-placeholder {
+      width: 80%;
+      height: 80%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #c8aaa0;
+      font-size: 14px;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .nav-right {
+        display: none;
+      }
+
+      .skin-body {
+        flex-direction: column;
+      }
+
+      .hero-left,
+      .hero-right {
+        width: 100%;
+      }
+
+      .hero-left {
+        height: 60%;
+        padding: 40px 8%;
+      }
+
+      .hero-right {
+        height: 40%;
+      }
+
+      .hero-heading {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav class="navbar">
+
+      <a href="#" class="brand">
+        <span class="brand-main">Mandup</span>
+        <span class="brand-sub">Digital Seva</span>
+      </a>
+
+      <div class="nav-links">
+
+        <button class="nav-button active">
+          Donation
+        </button>
+
+        <button class="nav-button">
+          Seva
+        </button>
+
+        <button class="nav-button">
+          Darsan
+        </button>
+
+      </div>
+
+      <div class="nav-right">
+
+        <div class="disbient">
+          Disbient: off
+        </div>
+
+        <button class="darshan-nav-button">
+          Darshan
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         SKIN BODY
+         ========================= -->
+
+    <main class="skin-body">
+
+      <!-- LEFT 60% -->
+      <section class="hero-left">
+
+        <h1 class="hero-heading">
+          Welcome To The Mandup
+        </h1>
+
+        <span class="hero-description">
+          A digital platform for your spiritual journey.<br />
+          Discover seva, darshan, schedules and devotion.
+        </span>
+
+        <div class="hero-buttons">
+
+          <button class="schedule-button">
+            View Today's Schedule
+          </button>
+
+          <button class="outline-button">
+            Ring Bell
+          </button>
+
+          <button class="outline-button">
+            Pushpanjali
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- RIGHT 40% -->
+      <section class="hero-right">
+
+        <!-- Ganpati illustration will go here -->
+        <div class="ganpati-placeholder">
+          Ganpati
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script>
+    const navButtons = document.querySelectorAll(".nav-button");
+
+    navButtons.forEach(button => {
+      button.addEventListener("click", () => {
+
+        navButtons.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+      });
+    });
+  </script>
+
+</body>
+</html>
+Show more
+below the 20% add heading retual and gathering below list of the arti sessios one below other in rectangle occuping full width with some margin added domme time and arti 
+
+Yes. I’ll add the section below the 60% hero area, inside the remaining bottom 20% area, with the heading “Ritual & Gathering” and stacked full-width Arti session rectangles showing the Arti name and time.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandup</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+      color: #222222;
+    }
+
+    #app {
+      width: 100%;
+      background: #ffffff;
+    }
+
+    /* =========================
+       TOP NAVIGATION
+       ========================= */
+
+    .navbar {
+      position: relative;
+      width: 100%;
+      height: 20vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 6%;
+      background: #ffffff;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+
+      text-decoration: none;
+      color: #222222;
+
+      line-height: 1.1;
+    }
+
+    .brand-main {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .brand-sub {
+      margin-top: 5px;
+
+      font-size: 13px;
+      font-weight: 400;
+
+      color: #c2c2c2;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: flex;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .nav-button {
+      position: relative;
+
+      border: none;
+      outline: none;
+      background: transparent;
+
+      padding: 10px 2px;
+
+      font-size: 15px;
+      font-weight: 400;
+
+      color: #333333;
+
+      cursor: pointer;
+    }
+
+    .nav-button::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 2px;
+      background: #fff4ed;
+
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+
+    .nav-button:hover::after,
+    .nav-button.active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-right {
+      margin-left: auto;
+
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .disbient {
+      font-size: 13px;
+      color: #b5b5b5;
+      letter-spacing: 0.3px;
+    }
+
+    .darshan-nav-button {
+      border: none;
+      background: #795548;
+      color: #ffffff;
+
+      padding: 10px 22px;
+
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .darshan-nav-button:hover {
+      background: #69483d;
+    }
+
+    /* =========================
+       HERO / SKIN BODY - 60%
+       ========================= */
+
+    .skin-body {
+      width: 100%;
+      height: 60vh;
+
+      background: #fff4ed;
+
+      display: flex;
+    }
+
+    .hero-left {
+      width: 60%;
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding-left: 9%;
+      padding-right: 6%;
+    }
+
+    .hero-heading {
+      margin-bottom: 14px;
+
+      font-size: 42px;
+      font-weight: 500;
+
+      color: #29211e;
+      line-height: 1.15;
+    }
+
+    .hero-description {
+      display: block;
+
+      max-width: 500px;
+
+      font-size: 16px;
+      line-height: 1.7;
+
+      color: #9b9b9b;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .schedule-button {
+      border: none;
+
+      background: #795548;
+      color: #ffffff;
+
+      padding: 13px 22px;
+
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .schedule-button:hover {
+      background: #69483d;
+    }
+
+    .outline-button {
+      border: 1px solid #222222;
+
+      background: transparent;
+      color: #222222;
+
+      padding: 12px 22px;
+
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .outline-button:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-right {
+      width: 40%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* =========================
+       RITUAL & GATHERING
+       ========================= */
+
+    .ritual-section {
+      width: 100%;
+      min-height: 20vh;
+
+      padding: 28px 6% 40px;
+
+      background: #ffffff;
+    }
+
+    .ritual-heading {
+      margin-bottom: 18px;
+
+      font-size: 24px;
+      font-weight: 500;
+
+      color: #29211e;
+    }
+
+    .arti-list {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .arti-session {
+      width: 100%;
+      min-height: 58px;
+
+      padding: 0 22px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border: 1px solid #eadfd9;
+      background: #fffaf7;
+
+      border-radius: 3px;
+    }
+
+    .arti-name {
+      font-size: 15px;
+      color: #40332e;
+    }
+
+    .arti-time {
+      font-size: 14px;
+      color: #999999;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 18px;
+      }
+
+      .nav-right {
+        display: none;
+      }
+
+      .skin-body {
+        height: auto;
+        min-height: 60vh;
+        flex-direction: column;
+      }
+
+      .hero-left,
+      .hero-right {
+        width: 100%;
+      }
+
+      .hero-left {
+        min-height: 55vh;
+        padding: 50px 8%;
+      }
+
+      .hero-right {
+        min-height: 35vh;
+      }
+
+      .hero-heading {
+        font-size: 32px;
+      }
+
+      .ritual-section {
+        padding: 28px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav class="navbar">
+
+      <a href="#" class="brand">
+        <span class="brand-main">Mandup</span>
+        <span class="brand-sub">Digital Seva</span>
+      </a>
+
+      <div class="nav-links">
+
+        <button class="nav-button active">
+          Donation
+        </button>
+
+        <button class="nav-button">
+          Seva
+        </button>
+
+        <button class="nav-button">
+          Darsan
+        </button>
+
+      </div>
+
+      <div class="nav-right">
+
+        <div class="disbient">
+          Disbient: off
+        </div>
+
+        <button class="darshan-nav-button">
+          Darshan
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         60% HERO AREA
+         ========================= -->
+
+    <main class="skin-body">
+
+      <!-- LEFT 60% -->
+
+      <section class="hero-left">
+
+        <h1 class="hero-heading">
+          Welcome To The Mandup
+        </h1>
+
+        <span class="hero-description">
+          A digital platform for your spiritual journey.<br />
+          Discover seva, darshan, schedules and devotion.
+        </span>
+
+        <div class="hero-buttons">
+
+          <button class="schedule-button">
+            View Today's Schedule
+          </button>
+
+          <button class="outline-button">
+            Ring Bell
+          </button>
+
+          <button class="outline-button">
+            Pushpanjali
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- RIGHT 40% -->
+
+      <section class="hero-right">
+        <!-- Ganpati illustration goes here -->
+      </section>
+
+    </main>
+
+
+    <!-- =========================
+         RITUAL & GATHERING
+         ========================= -->
+
+    <section class="ritual-section">
+
+      <h2 class="ritual-heading">
+        Ritual &amp; Gathering
+      </h2>
+
+      <div class="arti-list">
+
+        <div class="arti-session">
+          <span class="arti-name">
+            Mangala Arti
+          </span>
+
+          <span class="arti-time">
+            6:00 AM
+          </span>
+        </div>
+
+        <div class="arti-session">
+          <span class="arti-name">
+            Shringar Arti
+          </span>
+
+          <span class="arti-time">
+            8:00 AM
+          </span>
+        </div>
+
+        <div class="arti-session">
+          <span class="arti-name">
+            Madhyan Arti
+          </span>
+
+          <span class="arti-time">
+            12:00 PM
+          </span>
+        </div>
+
+        <div class="arti-session">
+          <span class="arti-name">
+            Sandhya Arti
+          </span>
+
+          <span class="arti-time">
+            6:30 PM
+          </span>
+        </div>
+
+        <div class="arti-session">
+          <span class="arti-name">
+            Shayan Arti
+          </span>
+
+          <span class="arti-time">
+            9:00 PM
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <script>
+    const navButtons = document.querySelectorAll(".nav-button");
+
+    navButtons.forEach(button => {
+      button.addEventListener("click", () => {
+
+        navButtons.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+      });
+    });
+  </script>
+
+</body>
+</html>
+Show more
+on opposite of title to right add  normal text 18  september, 2026
+
+Updated: the date is now on the right side opposite “Ritual & Gathering”, using normal 18px text.
+
+Updated Ritual Section
+<!-- =========================
+     RITUAL & GATHERING
+     ========================= -->
+
+<section class="ritual-section">
+
+  <div class="ritual-header">
+
+    <h2 class="ritual-heading">
+      Ritual &amp; Gathering
+    </h2>
+
+B
+
+  </div>
+
+  <div class="arti-list">
+
+    <div class="arti-session">
+      <span class="arti-name">
+        Mangala Arti
+      </span>
+
+      <span class="arti-time">
+        6:00 AM
+      </span>
+    </div>
+
+    <div class="arti-session">
+      <span class="arti-name">
+        Shringar Arti
+      </span>
+
+      <span class="arti-time">
+        8:00 AM
+      </span>
+    </div>
+
+    <div class="arti-session">
+      <span class="arti-name">
+        Madhyan Arti
+      </span>
+
+      <span class="arti-time">
+        12:00 PM
+      </span>
+    </div>
+
+    <div class="arti-session">
+      <span class="arti-name">
+        Sandhya Arti
+      </span>
+
+      <span class="arti-time">
+        6:30 PM
+      </span>
+    </div>
+
+    <div class="arti-session">
+      <span class="arti-name">
+        Shayan Arti
+      </span>
+
+      <span class="arti-time">
+        9:00 PM
+      </span>
+    </div>
+
+  </div>
+
+</section>
+
+Add/update the CSS:
+
+.ritual-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.ritual-heading {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 500;
+
+  color: #29211e;
+}
+
+.ritual-date {
+  font-size: 18px;
+  font-weight: 400;
+
+  color: #444444;
+}
